@@ -15,6 +15,9 @@ BuildRequires:  python3-devel
 BuildRequires:  python3dist(setuptools)
 BuildRequires:  python3dist(sphinx)
 
+# Manually added dependencies so it builds successfully
+BuildRequires:  python3dist(django)
+
 %description
 django-configurations django-configurations eases Django project configuration
 by relying on the composability of Python classes. It extends the notion of
