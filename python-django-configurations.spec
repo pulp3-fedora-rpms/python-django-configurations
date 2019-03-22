@@ -15,8 +15,19 @@ BuildRequires:  python3-devel
 BuildRequires:  python3dist(setuptools)
 BuildRequires:  python3dist(sphinx)
 
-# Manually added dependencies so it builds successfully
-BuildRequires:  python3dist(django)
+# If we do want to enable tests, we need these deps.
+# They are listed in tests/requirements.txt
+#BuildRequires:  python3dist(coverage)
+#BuildRequires:  python3dist(mock)
+#BuildRequires:  python3dist(dj-database-url)
+#BuildRequires:  python3dist(six)
+
+# As well as these deps not in Fedora yet.
+# They are listed in tests/requirements.txt
+#BuildRequires:  python3dist(django-discover-runner)
+#BuildRequires:  python3dist(dj-email-url)
+#BuildRequires:  python3dist(dj-search-url)
+#BuildRequires:  python3dist(django-cache-url) >= 1.0.0
 
 %description
 django-configurations django-configurations eases Django project configuration
@@ -51,8 +62,9 @@ rm -rf html/.{doctrees,buildinfo}
 %install
 %py3_install
 
-%check
-%{__python3} setup.py test
+# Disable due to large # of deps not in Fedora yet
+#%%check
+#%%{__python3} setup.py test
 
 %files -n python3-%{pypi_name}
 %license LICENSE
